@@ -8,7 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      #inputs.home-manager.nixosModules.default
+      inputs.home-manager.nixosModules.default
     ];
 
   # Bootloader.
@@ -84,6 +84,13 @@
      kitty 
      waybar 
   ];
+
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users = {
+      "pilape" = import ./home.nix;
+    };
+  };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   system.stateVersion = "25.11"; 
