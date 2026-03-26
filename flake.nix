@@ -1,24 +1,28 @@
 {
-  description = "Nixos config flake";
+    description = "A somewhat basic flake";
 
-  inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+    inputs = {
+        nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+        nvf = {
+	    url = "github:notashelf/nvf";
+	    inputs.nixpkgs.follows = "nixpkgs";
+	};
+	 #home-manager = {
+	     #url = "github:nix-community/home-manager";
+	     #inputs.nixpkgs.follows = "nixpkgs";
+	#};
     };
-  };
 
-  outputs = { self, nixpkgs, ... }@inputs: {
-    # use "nixos", or your hostname as the name of the configuration
-    # it's a better practice than "default" shown in the video
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs;};
-      modules = [
-        ./configuration.nix
-        inputs.home-manager.nixosModules.default
-      ];
+    outputs = { self, nixpkgs, nvf, ... }@inputs: {
+        # System config
+    	nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+	    specialArgs = {inherit inputs;};
+            modules = [
+	        ./configuration.nix
+		./nvf-configuration.nix
+		#inputs.home-manager.nixosModules.default
+            ];
+	};
+
     };
-  };
 }

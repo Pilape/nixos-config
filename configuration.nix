@@ -1,98 +1,64 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, inputs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      inputs.home-manager.nixosModules.default
+    imports = [ 
+        ./hardware-configuration.nix # Include the results of the hardware scan.
+        #inputs.home-manager.nixosModules.default
     ];
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+    # Bootloader.
+    boot.loader.grub.enable = true;
+    boot.loader.grub.device = "/dev/sda";
+    boot.loader.grub.useOSProber = true;
 
-  networking.hostName = "nixos";
+    system.name = "puter";
+    networking.hostName = "nixos"; # Define your hostname.
 
-  # Enable networking
-  networking.networkmanager.enable = true;
+    # Enable networking
+    networking.networkmanager.enable = true;
 
-  time.timeZone = "Europe/Oslo";
-  i18n.defaultLocale = "en_US.UTF-8";
+    # Set your time zone.
+    time.timeZone = "Europe/Oslo";
 
-  # Enable the X11 windowing system.
-  # You can disable this if you're only using the Wayland session.
-  services.xserver.enable = true;
+    # Select internationalisation properties.
+    i18n.defaultLocale = "en_US.UTF-8";
 
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "no";
-    variant = "";
-  };
-
-  # Configure console keymap
-  console.keyMap = "no";
-
-  # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
-  programs.fish = {
-    enable = true;
-    shellAliases = {
-      cls = "clear";
+    # Configure keymap in X11
+    services.xserver.xkb =  {
+        layout = "n ";
+        variant = "";
     };
-  };
 
-  users.users.pilape = {
-    shell = pkgs.fish;
-    isNormalUser = true;
-    description = "John NixOS";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    #  thunderbird
+    # Configure console keymap
+    console.keyMap = "no";
+
+    programs.fish.enable = true;
+
+    # Define a user account. Don't forget to set a password with ‘passwd’.
+    users.users.pilape =    {
+        isNormalUser =  true;
+        description =   "John NixOS";
+        extraGroups =   [ "networkmanager" "wheel" ];
+        packages =  with pkgs; [];
+        shell = pkgs.fish;
+    };
+
+    # Allow unfree packages
+    nixpkgs.config.allowUnfree = true;
+
+    # List packages installed in system profile. To search, run:
+    # $ nix search wget
+    environment.systemPackages = with pkgs; [
+        neovim 
+        wget
+        fastfetch 
+        git
+        gh 
     ];
-  };
 
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
-
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-  };
-
-  nixpkgs.config.allowUnfree = true;
-  programs.firefox.enable = true;
-  environment.systemPackages = with pkgs; [
-     wget 
-     fastfetch
-     discord
-     git
-     gh 
-     kitty 
-     waybar 
-  ];
-
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users = {
-      "pilape" = import ./home.nix;
-    };
-  };
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  system.stateVersion = "25.11"; 
+    # Enable the OpenSSH daemon.
+    services.openssh.enable = true;
+    system.stateVersion = "25.11"; 
+    nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
 }
