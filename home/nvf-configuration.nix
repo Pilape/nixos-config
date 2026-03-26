@@ -1,7 +1,7 @@
 { pkgs, lib, inputs, ... }:
 
 {
-    imports = [ inputs.nvf.nixosModules.default ];
+    imports = [ inputs.nvf.homeManagerModules.default ];
 
     programs.nvf = {
 	enable = true;
