@@ -1,4 +1,4 @@
-{ self, inputs, ... }: {
+{ self, inputs, ... }: {
 
 	flake.nixosModules.puterPrimeHardware = { config, lib, pkgs, modulesPath, ... }: {
 
@@ -28,4 +28,4 @@
 	  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 	};
 
-};
+}

@@ -1,4 +1,4 @@
-{ self, inputs, ... }: {
+{ self, inputs, ... }: {
 	flake.nixosModules.puterPrimeConfiguration = { config, lib, pkgs, ... }: {
 		  imports =
 		    [ 
@@ -21,12 +21,12 @@
 		  i18n.defaultLocale = "en_US.UTF-8";
 		  console = {
 		    font = "Lat2-Terminus16";
-		    keyMap = "no";
+		    #keyMap = "no";
 		    useXkbConfig = true; # use xkb.options in tty.
 		  };
 
 		  # Enable sound.
-	          services.pulseaudio.enable = true;
+	          #services.pulseaudio.enable = true;
 
 		  # Enable touchpad support (enabled default in most desktopManager).
 		  # services.libinput.enable = true;
@@ -55,4 +55,4 @@
 
 	  	system.stateVersion = "25.11"; # Did you read the comment?
 	};
-};
+}
