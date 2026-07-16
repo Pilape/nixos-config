@@ -25,6 +25,11 @@
 		    useXkbConfig = true; # use xkb.options in tty.
 		  };
 
+		  services.displayManager.sddm= {
+		  	enable = true;
+			wayland.enable = true;
+		  };
+
 		  # Enable sound.
 	          #services.pulseaudio.enable = true;
 

@@ -1,9 +1,10 @@
 let
-color1 = "#ff2266";
-color2 = "#12bb66";
-color3 = "#085533";
-color4 = "#ffffdd";
-color5 = "#001100";
+    palette = (import ./colors.nix);
+    color1 = "#ff2266";
+    color2 = "#12bb66";
+    color3 = "#085533";
+    color4 = "#ffffdd";
+    color5 = "#001100";
 in { self, inputs, ... }: {
 	
     perSystem = { pkgs, ... }: {
@@ -12,8 +13,8 @@ in { self, inputs, ... }: {
 	    inherit pkgs;
 
 	    "style.css".content = "
-		window#waybar {
-		    background-color: ${color2};
+		window#waybar 
+		    background-color: ${color1};
 		}
 
 		tooltip {

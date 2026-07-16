@@ -5,8 +5,15 @@
 	    inherit pkgs;
 
 	    settings = {
+	    	modes = [ "drun" ];
 	    };
+
+	    theme = "gruvbox-dark";
 	};
     };
 
 }
+     
+
+     
+
