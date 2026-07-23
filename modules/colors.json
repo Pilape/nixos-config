@@ -1,0 +1,10 @@
+{
+    "background": "#001100",
+    "foreground": "#085533",
+    "primary": "#12bb66",
+    "secondary": "#ff2266",
+    "text": "#ffffdd",
+    "error": "#ff2266",
+    "warning": "#ffff33",
+    "success": "#12bb66"
+}

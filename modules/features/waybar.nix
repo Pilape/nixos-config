@@ -1,10 +1,5 @@
 let
-    palette = (import ./colors.nix);
-    color1 = "#ff2266";
-    color2 = "#12bb66";
-    color3 = "#085533";
-    color4 = "#ffffdd";
-    color5 = "#001100";
+    palette = builtins.fromJSON (builtins.readFile ../colors.json);
 in { self, inputs, ... }: {
 	
     perSystem = { pkgs, ... }: {
@@ -13,12 +8,12 @@ in { self, inputs, ... }: {
 	    inherit pkgs;
 
 	    "style.css".content = "
-		window#waybar 
-		    background-color: ${color1};
+		window#waybar {
+		    background-color: ${palette.background};
 		}
 
 		tooltip {
-		    background-color: ${color5};
+		    background-color: ${palette.background};
 		    border-radius: 0px;
 		}
 
@@ -27,8 +22,13 @@ in { self, inputs, ... }: {
 		    padding-right: 10px;
 		    margin: 2px;
 
-		    background-color: ${color3};
-		    color: ${color4};
+		    background-color: ${palette.background};
+		    
+		    border-style: solid;
+		    border-width: 2px;
+		    border-color: ${palette.primary};
+
+		    color: ${palette.primary};
 		}
 	    ";
 
@@ -56,7 +56,7 @@ in { self, inputs, ... }: {
 
 		network = {
 		    format = "{essid} ({signalStrength}%) | {ipaddr}";
-		    format-disconnected = "<span color='${color1}'>Disconnected</span>";
+		    format-disconnected = "<span color='${palette.error}'>Disconnected</span>";
 		};
 
 		modules-center = [ "niri/workspaces" ];
@@ -69,10 +69,10 @@ in { self, inputs, ... }: {
 		    tooltip-format = "<tt>{calendar}</tt>";
 		    calendar = {
 			format = {
-			    months = "<span color='${color1}'><b>{}</b></span>";
-			    weekdays = "<span color='${color2}'>{}</span>";
-			    days = "<span color='${color3}'>{}</span>";
-			    today = "<span color='${color1}'><b>{}</b></span>";
+			    months = "<span color='${palette.secondary}'><b>{}</b></span>";
+			    weekdays = "<span color='${palette.primary}'>{}</span>";
+			    days = "<span color='${palette.foreground}'>{}</span>";
+			    today = "<span color='${palette.secondary}'><b>{}</b></span>";
 			};
 		    };
 		};
@@ -85,7 +85,8 @@ in { self, inputs, ... }: {
 		    };
 
 
-		    format = "{capacity}%";
+		    format = "Battery: {capacity}%";
+		    format-warning = "Battery: <span color='${palette.warning}'>{capacity}%</span>";
 		};
 
 	    };

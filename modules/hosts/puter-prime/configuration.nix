@@ -20,7 +20,7 @@
 			  # Select internationalisation properties.
 		  i18n.defaultLocale = "en_US.UTF-8";
 		  console = {
-		    font = "Lat2-Terminus16";
+		    font = "hurmit";
 		    #keyMap = "no";
 		    useXkbConfig = true; # use xkb.options in tty.
 		  };
@@ -29,6 +29,12 @@
 		  	enable = true;
 			wayland.enable = true;
 		  };
+
+		  hardware.bluetooth = {
+		      enable = true;
+		      powerOnBoot = true;
+		  };
+		  services.blueman.enable = true;
 
 		  # Enable sound.
 	          #services.pulseaudio.enable = true;
@@ -42,8 +48,11 @@
 		    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
 		    packages = with pkgs; [
 			fastfetch 
+			discord 
 	    	    ];
 	  	  };
+
+		nixpkgs.config.allowUnfree = true;
 
 	  	programs.firefox.enable = true;
 
@@ -54,6 +63,8 @@
 	    		wget 
 	    		git 
 	    		gh 
+			libreoffice 
+			aseprite 
 	  	];
 
 		nix.settings.experimental-features = [ "nix-command" "flakes" ];
