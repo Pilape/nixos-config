@@ -10,6 +10,7 @@
         environment.systemPackages = with pkgs; [
             pkgs.nixd
             pkgs.ccls
+            pkgs.lua-language-server
         ];
     };
 
@@ -22,6 +23,8 @@
                 pkgs.vimPlugins.plenary-nvim
                 pkgs.vimPlugins.nvim-treesitter.withAllGrammars
                 pkgs.vimPlugins.gruvbox
+                pkgs.vimPlugins.blink-cmp
+                pkgs.vimPlugins.lualine-nvim
             ];
 
             foldPlugins = builtins.foldl' (
