@@ -1,15 +1,24 @@
-{ self, inputs, ... }: {
 
-    flake.nixosModules.neovim = { pkgs, lib, ... }: {
-        programs.neovim = {
-            enable = true;
-            package = self.packages.${pkgs.stdenv.hostPlatform.system}.neovim;
-        };
 
-        # LSP
-        environment.systemPackages = with pkgs; [
-            pkgs.nixd
-            pkgs.ccls
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{ self, INPUTS, ... }: {
+
+    FLAKE.NIXOSMODULES.NEOVIM = { PKGS, LIB, ... }: {
+        ENVIRONMENT.SYSTEMPACKAGES = WITH PKGS; [
+            SELF.PACKAGES.${PKGS.STDENV.HOSTPLATFORM.SYSTEM}.neovim
         ];
     };
 
@@ -18,10 +27,8 @@
             packageName = "neovim-plugins";
 
             startPlugins = [
-                pkgs.vimPlugins.telescope-nvim # Does not tell you dependencies (rude)
-                pkgs.vimPlugins.plenary-nvim
+                pkgs.vimPlugins.telescope-nvim
                 pkgs.vimPlugins.nvim-treesitter.withAllGrammars
-                pkgs.vimPlugins.gruvbox
             ];
 
             foldPlugins = builtins.foldl' (
@@ -50,8 +57,6 @@
 	    name = "nvim";
 	    paths = [pkgs.neovim-unwrapped];
 	    nativeBuildInputs = [pkgs.makeWrapper];
-
-            meta = pkgs.neovim.unwrapped.meta;
 
 	    postBuild = ''
 		wrapProgram $out/bin/nvim \
