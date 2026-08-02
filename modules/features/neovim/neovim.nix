@@ -3,6 +3,7 @@
     flake.nixosModules.neovim = { pkgs, lib, ... }: {
         programs.neovim = {
             enable = true;
+            defaultEditor = true;
             package = self.packages.${pkgs.stdenv.hostPlatform.system}.neovim;
         };
 
