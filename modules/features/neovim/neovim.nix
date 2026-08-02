@@ -25,6 +25,7 @@
                 pkgs.vimPlugins.gruvbox
                 pkgs.vimPlugins.blink-cmp
                 pkgs.vimPlugins.lualine-nvim
+                pkgs.vimPlugins.moveline-nvim
             ];
 
             foldPlugins = builtins.foldl' (
