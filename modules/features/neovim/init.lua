@@ -50,14 +50,6 @@ vim.lsp.enable('luals')
 ------------------
 
 --== TELESCOPE ==--
-function telescope_current_buffer_fuzzy()
-    vim.cmd("Telescope current_buffer_fuzzy_find")
-end
-
-function telescope_all()
-    vim.cmd("Telescope")
-end
-
 vim.keymap.set('n', '<Leader>fa', '<cmd>Telescope<cr>')
 vim.keymap.set('n', '<Leader>ff', '<cmd>Telescope find_files<cr>')
 vim.keymap.set('n', '<Leader>fc', '<cmd>Telescope current_buffer_fuzzy_find<cr>')
