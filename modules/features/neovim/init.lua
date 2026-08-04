@@ -9,7 +9,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 require('lualine').setup()
-vim.cmd("colorscheme gruvbox")
+vim.cmd.colorscheme("everforest")
 -----------------------
 
 --== MISC ==--
