@@ -4,7 +4,7 @@
         selfpkgs = self.packages."${pkgs.system}";
     in {
 
-	services.displayManager.enable = true;
+	services.displayManager.ly.enable = true;
 
         fonts.packages = with pkgs; [
             hermit
