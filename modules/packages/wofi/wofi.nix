@@ -1,14 +1,13 @@
 { self, inputs, ... }: {
 
-    perSystem = { pkgs, ... }: {
-        packages.tofi = inputs.wrappers.lib.wrapPackage {
+    perSystem = { pkgs, self', ... }: {
+        packages.wofi = inputs.wrappers.lib.wrapPackage {
             inherit pkgs;
-            package = pkgs.tofi;
-
+            package = pkgs.wofi;
+            
             flags = {
                 "-c" = "${./config}";
             };
-
         };
     };
 

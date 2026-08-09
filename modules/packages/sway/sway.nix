@@ -13,7 +13,7 @@
                 pkgs.swaylock
 
                 pkgs.grim
-                selfpkgs.tofi
+                selfpkgs.wofi
             ];
             
             flags = {

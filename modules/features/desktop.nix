@@ -4,6 +4,8 @@
         selfpkgs = self.packages."${pkgs.system}";
     in {
 
+        imports = [ self.nixosModules.neovim ];
+
 	services.displayManager.ly.enable = true;
 
         fonts.packages = with pkgs; [
