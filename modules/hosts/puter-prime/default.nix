@@ -18,6 +18,7 @@
 
             self.nixosModules.discord
             self.nixosModules.office
+            self.nixosModules.file-explorer
 
 	];
     };
