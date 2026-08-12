@@ -4,6 +4,8 @@
         environment.systemPackages = with pkgs; [
             kdePackages.dolphin
         ];
+
+        services.udisk2.enable = true;
     };
 
 }
