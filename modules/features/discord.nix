@@ -4,6 +4,8 @@
         environment.systemPackages = with pkgs; [
             discord
         ];
+
+        xdg.portal.enable = true;
     };
 
 }
