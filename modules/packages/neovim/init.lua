@@ -14,6 +14,7 @@ vim.cmd.colorscheme("everforest")
 
 --== MISC ==--
 require('blink-cmp').setup()
+require('autoclose').setup()
 
 local moveline = require('moveline')
 vim.keymap.set('n', '<M-k>', moveline.up)
