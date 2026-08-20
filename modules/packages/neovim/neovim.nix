@@ -12,6 +12,7 @@
             pkgs.nixd
             pkgs.ccls
             pkgs.lua-language-server
+            pkgs.asm-lsp
         ];
     };
 
@@ -27,6 +28,7 @@
                 pkgs.vimPlugins.blink-cmp
                 pkgs.vimPlugins.lualine-nvim
                 pkgs.vimPlugins.moveline-nvim
+                pkgs.vimPlugins.autoclose-nvim
             ];
 
             foldPlugins = builtins.foldl' (

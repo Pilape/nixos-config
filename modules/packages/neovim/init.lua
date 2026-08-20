@@ -29,7 +29,7 @@ vim.keymap.set({'n', 'i'}, '<C-s>', '<cmd>w<cr>')
 --== LSP ==--
 vim.lsp.config('ccls', {
     cmd = {'ccls'},
-    filetypes = {'c', 'h', 'cpp', 'hpp'},
+    filetypes = {'c', 'cpp'},
     root_markers = {'.git'},
 })
 vim.lsp.enable('ccls')
@@ -47,6 +47,13 @@ vim.lsp.config('luals', {
     root_markers = {'.luarc.json', '.luarc.jsonc', '.git'},
 })
 vim.lsp.enable('luals')
+
+vim.lsp.config('asm-lsp', {
+    cmd = {'asm-lsp'},
+    filetypes = { 'asm' },
+    root_markers = { '.git', '.asm-lsp.toml' },
+})
+vim.lsp.enable('asm-lsp')
 ------------------
 
 --== TELESCOPE ==--
