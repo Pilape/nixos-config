@@ -6,6 +6,10 @@
 
             package = pkgs.tmux;
 
+            runtimeInputs = with pkgs.tmuxPlugins; [
+                resurrect
+            ];
+
             flags = {
                 "-f" = "${./.tmux.conf}";
             };

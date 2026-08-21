@@ -20,15 +20,16 @@
         packages.neovim = let
             packageName = "neovim-plugins";
 
-            startPlugins = [
-                pkgs.vimPlugins.telescope-nvim # Does not tell you dependencies (rude)
-                pkgs.vimPlugins.plenary-nvim
-                pkgs.vimPlugins.nvim-treesitter.withAllGrammars
-                pkgs.vimPlugins.vim-dim
-                pkgs.vimPlugins.blink-cmp
-                pkgs.vimPlugins.moveline-nvim
-                pkgs.vimPlugins.autoclose-nvim
-                pkgs.vimPlugins.gitsigns-nvim
+            startPlugins = with pkgs.vimPlugins; [
+                telescope-nvim # Does not tell you dependencies (rude)
+                plenary-nvim
+                nvim-treesitter.withAllGrammars
+                vim-dim
+                blink-cmp
+                moveline-nvim
+                autoclose-nvim
+                gitsigns-nvim
+                vim-obsession
             ];
 
             foldPlugins = builtins.foldl' (
