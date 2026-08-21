@@ -29,6 +29,7 @@
                 pkgs.vimPlugins.lualine-nvim
                 pkgs.vimPlugins.moveline-nvim
                 pkgs.vimPlugins.autoclose-nvim
+                pkgs.vimPlugins.gitsigns-nvim
             ];
 
             foldPlugins = builtins.foldl' (

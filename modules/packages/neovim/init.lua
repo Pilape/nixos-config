@@ -13,8 +13,19 @@ vim.cmd.colorscheme("everforest")
 -----------------------
 
 --== MISC ==--
-require('blink-cmp').setup()
 require('autoclose').setup()
+require('gitsigns').setup()
+require('blink-cmp').setup({
+    completion = { documentation = {
+        auto_show = true,
+        auto_show_delay_ms = 500,
+    }},
+
+    signature = { 
+        enabled = true,
+        --window = { show_documentation = false },
+    }
+})
 
 local moveline = require('moveline')
 vim.keymap.set('n', '<M-k>', moveline.up)
