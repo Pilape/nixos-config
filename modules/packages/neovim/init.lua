@@ -13,7 +13,6 @@ vim.cmd.colorscheme("dim")
 
 --== MISC ==--
 require('autoclose').setup()
-require('obsession').setup()
 require('gitsigns').setup()
 require('blink-cmp').setup({
     completion = { documentation = {
