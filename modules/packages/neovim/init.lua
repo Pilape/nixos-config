@@ -8,8 +8,7 @@ vim.opt.shiftwidth = 4
 vim.opt.number = true
 vim.opt.relativenumber = true
 
-require('lualine').setup()
-vim.cmd.colorscheme("everforest")
+vim.cmd.colorscheme("dim")
 -----------------------
 
 --== MISC ==--

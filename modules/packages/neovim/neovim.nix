@@ -24,9 +24,8 @@
                 pkgs.vimPlugins.telescope-nvim # Does not tell you dependencies (rude)
                 pkgs.vimPlugins.plenary-nvim
                 pkgs.vimPlugins.nvim-treesitter.withAllGrammars
-                pkgs.vimPlugins.everforest
+                pkgs.vimPlugins.vim-dim
                 pkgs.vimPlugins.blink-cmp
-                pkgs.vimPlugins.lualine-nvim
                 pkgs.vimPlugins.moveline-nvim
                 pkgs.vimPlugins.autoclose-nvim
                 pkgs.vimPlugins.gitsigns-nvim
