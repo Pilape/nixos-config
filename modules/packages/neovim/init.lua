@@ -32,6 +32,8 @@ vim.keymap.set('n', '<M-j>', moveline.down)
 vim.keymap.set('v', '<M-k>', moveline.block_up)
 vim.keymap.set('v', '<M-j>', moveline.block_down)
 
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
+
 vim.g.mapleader = ' '
 
 vim.keymap.set({'n', 'i'}, '<C-s>', '<cmd>w<cr>')

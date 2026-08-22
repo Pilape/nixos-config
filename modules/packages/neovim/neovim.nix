@@ -9,10 +9,10 @@
 
         # LSP
         environment.systemPackages = with pkgs; [
-            pkgs.nixd
-            pkgs.ccls
-            pkgs.lua-language-server
-            pkgs.asm-lsp
+            nixd
+            ccls
+            lua-language-server
+            asm-lsp
         ];
     };
 
@@ -29,7 +29,6 @@
                 moveline-nvim
                 autoclose-nvim
                 gitsigns-nvim
-                vim-obsession
             ];
 
             foldPlugins = builtins.foldl' (
