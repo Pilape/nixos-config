@@ -26,17 +26,34 @@ require('blink-cmp').setup({
     }
 })
 
+vim.g.mapleader = ' '
+
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>') -- Escape terminal mode with ESC
+vim.keymap.set({'n', 'i'}, '<C-s>', '<cmd>w<cr>') -- CTRL+s to save
+
+---------------
+
+--== WINDOWS/SPLITS ==--
+
+-- Movement --
+vim.keymap.set({'n', 't'}, '<C-h>', '<C-w>h')
+vim.keymap.set({'n', 't'}, '<C-j>', '<C-w>j')
+vim.keymap.set({'n', 't'}, '<C-k>', '<C-w>k')
+vim.keymap.set({'n', 't'}, '<C-l>', '<C-w>l')
+
+-- Creating and deleting splits
+vim.keymap.set({'n', 't'}, '<M-s>', '<C-w>s')
+vim.keymap.set({'n', 't'}, '<M-v>', '<C-w>v')
+vim.keymap.set({'n', 't'}, '<M-q>', '<C-w>q')
+
+---------------
+
+--== MOVELINE ==--
 local moveline = require('moveline')
 vim.keymap.set('n', '<M-k>', moveline.up)
 vim.keymap.set('n', '<M-j>', moveline.down)
 vim.keymap.set('v', '<M-k>', moveline.block_up)
 vim.keymap.set('v', '<M-j>', moveline.block_down)
-
-vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
-
-vim.g.mapleader = ' '
-
-vim.keymap.set({'n', 'i'}, '<C-s>', '<cmd>w<cr>')
 ---------------
 
 --== LSP ==--
