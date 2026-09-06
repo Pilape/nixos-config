@@ -8,9 +8,10 @@
 
 	services.displayManager.ly.enable = true;
 
-        #environment.systemPackages = with pkgs; [
-        #    wmname
-        #];
+        environment.systemPackages = with pkgs; [
+            #wmname
+            ffmpeg
+        ];
 
         fonts.packages = with pkgs; [
             hermit
