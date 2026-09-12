@@ -59,12 +59,19 @@ vim.keymap.set('v', '<M-j>', moveline.block_down)
 ---------------
 
 --== LSP ==--
-vim.lsp.config('clangd', {
-    cmd = {'clangd'},
+-- vim.lsp.config('clangd', {
+--     cmd = {'clangd'},
+--     filetypes = {'c', 'cpp'},
+--     root_markers = {'.git', '.clangd', 'compile_commands.json', 'compile_flags.txt'},
+-- })
+-- vim.lsp.enable('clangd')
+
+vim.lsp.config('ccls', {
+    cmd = {'ccls'},
     filetypes = {'c', 'cpp'},
-    root_markers = {'.git', '.clangd', 'compile_commands.json', 'compile_flags.txt'},
+    root_markers = {'.git', 'compile_commands.json', 'compile_flags.txt'}
 })
-vim.lsp.enable('clangd')
+vim.lsp.enable('ccls')
 
 vim.lsp.config('nixd', {
     cmd = {'nixd'},
