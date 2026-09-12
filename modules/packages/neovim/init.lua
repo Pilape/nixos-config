@@ -20,11 +20,13 @@ require('blink-cmp').setup({
         auto_show_delay_ms = 500,
     }},
 
-    signature = { 
+    signature = {
         enabled = true,
         --window = { show_documentation = false },
     }
 })
+
+vim.diagnostic.config({virtual_text = true}) -- Display LSP error messages
 
 vim.g.mapleader = ' '
 
