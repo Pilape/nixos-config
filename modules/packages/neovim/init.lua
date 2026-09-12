@@ -62,7 +62,7 @@ vim.lsp.config('clangd', {
     filetypes = {'c', 'cpp'},
     root_markers = {'.git', '.clangd', 'compile_commands.json', 'compile_flags.txt'},
 })
-vim.lsp.enable('ccls')
+vim.lsp.enable('clangd')
 
 vim.lsp.config('nixd', {
     cmd = {'nixd'},
