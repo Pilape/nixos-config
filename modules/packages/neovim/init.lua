@@ -57,10 +57,10 @@ vim.keymap.set('v', '<M-j>', moveline.block_down)
 ---------------
 
 --== LSP ==--
-vim.lsp.config('ccls', {
-    cmd = {'ccls'},
+vim.lsp.config('clangd', {
+    cmd = {'clangd'},
     filetypes = {'c', 'cpp'},
-    root_markers = {'.git'},
+    root_markers = {'.git', '.clangd', 'compile_commands.json', 'compile_flags.txt'},
 })
 vim.lsp.enable('ccls')
 
