@@ -10,8 +10,8 @@
         # LSP
         environment.systemPackages = with pkgs; [
             nixd
-            libclang.clangd
-            # ccls
+            libclang # Installs alot more, but we need clangd so... (bloat D:)
+            # cclsD:)
             lua-language-server
             asm-lsp
         ];
