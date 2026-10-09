@@ -5,6 +5,9 @@
 
         environment.systemPackages = with pkgs; [
             prismlauncher
+
+            rogue
+            dwarf-fortress
         ];
     };
 

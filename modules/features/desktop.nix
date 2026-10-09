@@ -17,6 +17,11 @@
             hermit
         ];
 
+        services.xserver.windowManager.i3 = {
+            enable = true;
+            package = selfpkgs.i3;
+        };
+
         programs.sway = {
             enable = true;
             package = selfpkgs.desktop;

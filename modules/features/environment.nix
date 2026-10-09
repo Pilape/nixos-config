@@ -12,8 +12,9 @@
                 selfpkgs.neovim
                 selfpkgs.tmux
                 pkgs.git
-                pkgs.gh
+                # pkgs.gh
                 pkgs.fastfetch
+                pkgs.unzip
                 pkgs.wmname # Might be removed later, but sometimes I gotta run a command to fix Java application UI
             ];
 
