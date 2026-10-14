@@ -3,6 +3,8 @@
     flake.nixosModules.general = { pkgs, ... }: {
 	nixpkgs.config.allowUnfree = true;
 
+        console.keyMap = "no";
+
         # Allow execution of dynamically linked executables (sometimes)
         programs.nix-ld = {
             enable = true;

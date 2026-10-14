@@ -1,30 +1,48 @@
-{ self, inputs, ... }: {
+{ self, ... }: {
 
-    flake.nixosModules.desktop = { pkgs, lib, ... }: let 
+    flake.nixosModules.desktop = { pkgs, ... }: let 
         selfpkgs = self.packages."${pkgs.system}";
     in {
 
-        imports = [ self.nixosModules.neovim ];
+        imports = [ 
+            self.nixosModules.neovim 
+            # self.nixosModules.i3 
+            self.nixosModules.kitty 
+        ];
 
 	services.displayManager.ly.enable = true;
 
-        environment.systemPackages = with pkgs; [
+        environment.systemPackages = [
             #wmname
-            ffmpeg
+            pkgs.ffmpeg
+            pkgs.gtk3
         ];
 
-        fonts.packages = with pkgs; [
-            hermit
-        ];
-
-        services.xserver.windowManager.i3 = {
+        services.xserver = {
             enable = true;
-            package = selfpkgs.i3;
+            autorun = true;
+        };
+
+        xdg.portal.enable = true;
+        xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr ];
+        # xdg.portal.config.common.default = [ "gtk" ];
+        # xdg.portal.xdgOpenUsePortal = true;
+
+        programs.uwsm = {
+            enable = true;
+
+            waylandCompositors = {
+                sway = {
+                  prettyName = "Sway";
+                  comment = "Sway compositor managed by UWSM";
+                  binPath = "/run/current-system/sw/bin/sway";
+                };
+            };
         };
 
         programs.sway = {
             enable = true;
-            package = selfpkgs.desktop;
+            package = selfpkgs.sway;
 
             xwayland.enable = true;
             wrapperFeatures.gtk = true;
@@ -38,18 +56,18 @@
         users.defaultUserShell = selfpkgs.environment;
     };
 
-    perSystem = { pkgs, self', ... }: {
-        packages.desktop = let
-            selfpkgs = self'.packages; 
-        in inputs.wrappers.lib.wrapPackage {
-            inherit pkgs;
-
-            package = selfpkgs.sway;
-
-            runtimeInputs = [
-                selfpkgs.kitty
-            ];
-        };
-    };
+    # perSystem = { pkgs, self', ... }: {
+    #     packages.desktop = let
+    #         selfpkgs = self'.packages; 
+    #     in inputs.wrappers.lib.wrapPackage {
+    #         inherit pkgs;
+    #
+    #         package = selfpkgs.sway;
+    #
+    #         runtimeInputs = [
+    #             selfpkgs.kitty
+    #         ];
+    #     };
+    # };
 
 }

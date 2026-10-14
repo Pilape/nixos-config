@@ -1,6 +1,8 @@
-{ self, inputs, ...}: {
+{ self, ...}: {
 
-    flake.nixosModules.browser = { pkgs, ... }: {
+    flake.nixosModules.browser = { pkgs, ... }: let 
+        selfpkgs = self.packages."${pkgs.system}";
+    in {
 	programs.firefox = {
             enable = true;
         };
